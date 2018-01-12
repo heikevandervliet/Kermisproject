@@ -3,7 +3,7 @@ package kermisdingen;
 public class Spookhuis extends Attractie {
 
 	private static String name = "Spookhuis";
-	private static double omzet = 0;
+	private static double omzet = 0.00;
 	private static double ritprijs = 2.25;
 	private static int ritjes = 0;
 	

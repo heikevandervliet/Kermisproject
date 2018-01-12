@@ -3,8 +3,8 @@ package kermisdingen;
 public class Hawaii extends Attractie{
 
 	private static String name = "Hawaii";
-	private static double omzet = 0;
-	private static double ritprijs = 2.9;
+	private static double omzet = 0.00;
+	private static double ritprijs = 2.90;
 	private static int ritjes = 0;
 	
 	public Hawaii() {

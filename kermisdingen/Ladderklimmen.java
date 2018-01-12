@@ -3,8 +3,8 @@ package kermisdingen;
 public class Ladderklimmen extends Attractie {
 
 private static String name = "Ladderklimmen";
-private static double omzet = 0;
-private static double ritprijs = 5.0;
+private static double omzet = 0.00;
+private static double ritprijs = 5.00;
 private static int ritjes = 0;
 
 	public Ladderklimmen() {

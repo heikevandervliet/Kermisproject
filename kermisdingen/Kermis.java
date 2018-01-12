@@ -144,8 +144,8 @@ public class Kermis {
 					while (medewerker.getIsAanHetWerk() == true) {
 						System.out.println("Geef door middel van de cijfers 1-6 aan welke kaartjes je verkoopt." + 
 								"\nOf kijk met 'o' of 'k' wat de omzet of de hoeveelheid verkochte kaartjes is."+
-								"\nOm je werkdag te beeindigen kies 'q'.");
-						System.out.println("1: Botsauto's \n2: Spin \n3: Spiegelpaleis \n4: Spookhuis \n5: Hawaii \n6: Ladderklimmen \no = omzet \nk = aantal verkochte kaartjes \nq = quit"); 
+								"\nOm je werkdag te beeindigen kies 's'.");
+						System.out.println("1: Botsauto's \n2: Spin \n3: Spiegelpaleis \n4: Spookhuis \n5: Hawaii \n6: Ladderklimmen \no = omzet \nk = aantal verkochte kaartjes \ns = stop"); 
 						String actie = scanner.next();
 						switch(actie) {
 						case "1": 	System.out.println();
@@ -194,7 +194,7 @@ public class Kermis {
 										"\nLadderklimmen: "+ Ladderklimmen.getRitjes());
 									System.out.println();
 									break;
-						case "q":	System.out.println();
+						case "s":	System.out.println();
 									System.out.println("De dag is ten einde.");
 									System.out.println("De dagomzet in euro's is: "+ Attractie.getOmzet());
 									System.out.println("De totale kaartverkoop is: "+ Attractie.getRitjes());
@@ -203,7 +203,7 @@ public class Kermis {
 									scanner.close();
 									break ;
 						default: 	System.out.println();
-									System.out.println("Geen geldige actie gekozen, kies een getal tussen 1-6 of 'o' of 'k'.");
+									System.out.println("Geen geldige actie gekozen, kies een getal tussen 1-6 of 'o','k' of 's'.");
 									System.out.println();
 									break;
 						}

@@ -3,7 +3,7 @@ package kermisdingen;
 public class Spin extends Attractie {
 	
 	private static String name = "Spin";
-	private static double omzet = 0;
+	private static double omzet = 0.00;
 	private static double ritprijs = 2.25;
 	private static int ritjes;
 	

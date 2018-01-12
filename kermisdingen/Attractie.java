@@ -2,8 +2,8 @@ package kermisdingen;
 
 public abstract class Attractie {
 	
-	static double omzet = 0;
-	static double ritprijs = 2;
+	static double omzet = 0.00;
+	static double ritprijs = 2.00;
 	static int ritjes = 0;
 	
 	protected abstract void draait();
