@@ -2,14 +2,21 @@ package kermisdingen;
 
 public class Hawaii extends Attractie{
 
-private static double omzet = 0;
-private static double ritprijs = 2.9;
-private static int ritjes = 0;
+	private static String name = "Hawaii";
+	private static double omzet = 0;
+	private static double ritprijs = 2.9;
+	private static int ritjes = 0;
 	
 	public Hawaii() {
 		this.omzet += ritprijs;
-		super.totaleOmzet += ritprijs;
+		super.omzet += ritprijs;
+		this.ritjes++;
+		super.ritjes++;
 		draait();
+	}
+	
+	public static String getName() {
+		return name;
 	}
 	
 	public void draait() {
@@ -20,8 +27,12 @@ private static int ritjes = 0;
 		return ritprijs;
 	}
 	
-	public static double getRitjes() {
+	public static int getRitjes() {
 		return ritjes;
+	}
+	
+	public static double getOmzet() {
+		return omzet;
 	}
 	
 }

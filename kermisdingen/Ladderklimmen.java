@@ -2,17 +2,22 @@ package kermisdingen;
 
 public class Ladderklimmen extends Attractie {
 
-
+private static String name = "Ladderklimmen";
 private static double omzet = 0;
 private static double ritprijs = 5.0;
 private static int ritjes = 0;
 
 	public Ladderklimmen() {
 		this.omzet += ritprijs;
-		super.totaleOmzet += ritprijs;
+		super.omzet += ritprijs;
+		this.ritjes++;
+		super.ritjes++;
 		draait();
 	}
 	
+	public static String getName() {
+		return name;
+	}
 	public void draait() {
 		System.out.println("Jeej, ladders klimmen!");
 	}
@@ -21,8 +26,12 @@ private static int ritjes = 0;
 		return ritprijs;
 	}
 	
-	public static double getRitjes() {
+	public static int getRitjes() {
 		return ritjes;
+	}
+	
+	public static double getOmzet() {
+		return omzet;
 	}
 	
 }

@@ -2,14 +2,21 @@ package kermisdingen;
 
 public class Spookhuis extends Attractie {
 
+	private static String name = "Spookhuis";
 	private static double omzet = 0;
 	private static double ritprijs = 2.25;
-	private static double ritjes = 0;
+	private static int ritjes = 0;
 	
 	public Spookhuis() {
 		this.omzet += ritprijs;
-		super.totaleOmzet += ritprijs;
+		super.omzet += ritprijs;
+		this.ritjes++;
+		super.ritjes++;
 		draait();
+	}
+	
+	public static String getName() {
+		return name;
 	}
 	
 	public void draait() {
@@ -20,8 +27,12 @@ public class Spookhuis extends Attractie {
 		return ritprijs;
 	}
 	
-	public static double getRitjes() {
+	public static int getRitjes() {
 		return ritjes;
+	}
+	
+	public static double getOmzet() {
+		return omzet;
 	}
 	
 }

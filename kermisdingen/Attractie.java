@@ -2,7 +2,7 @@ package kermisdingen;
 
 public abstract class Attractie {
 	
-	static double totaleOmzet = 0;
+	static double omzet = 0;
 	static double ritprijs = 2;
 	static int ritjes = 0;
 	
@@ -13,12 +13,12 @@ public abstract class Attractie {
 		return ritprijs;
 	}
 	
-	public static double getRitjes() {
+	public static int getRitjes() {
 		return ritjes;
 	}
 	
-	public static double getTotaleOmzet() {
-		return totaleOmzet;
+	public static double getOmzet() {
+		return omzet;
 	}
 	
 	

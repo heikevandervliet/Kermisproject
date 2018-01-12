@@ -5,10 +5,13 @@ public class Botsauto extends Attractie {
 private static double omzet = 0;
 private static double ritprijs = 2.5;
 private static int ritjes = 0;
+private static String name = "Botsauto's";
 	
 	public Botsauto () {
 		this.omzet += ritprijs;
-		super.totaleOmzet += ritprijs;
+		super.omzet += ritprijs;
+		this.ritjes++;
+		super.ritjes++;
 		draait();
 	}
 	
@@ -16,13 +19,20 @@ private static int ritjes = 0;
 		System.out.println("Botsauto's rijden.");
 	}
 	
+	public static String getName() { 
+		return name;
+	}
+	
 	public static double getRitprijs() {
 		return ritprijs;
 	}
 	
-	public static double getRitjes() {
+	public static int getRitjes() {
 		return ritjes;
 	}
 	
+	public static double getOmzet() {
+		return omzet;
+	}
 
 }
