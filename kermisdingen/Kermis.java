@@ -5,9 +5,128 @@ import java.util.Scanner;
 public class Kermis {
 	
 	private double budget;
+	private Ladderklimmen ladderklimmen;
+	private Spiegelpaleis spiegelpaleis;
+	private Spin spin;
+	private Spookhuis spookhuis;
+	private Botsauto botsauto;
+	private Hawaii hawaii;
 	
-	public Kermis (double budget) { 
-		this.budget = budget;
+	public Kermis() {
+		  ladderklimmen = new Ladderklimmen();
+		  spiegelpaleis = new Spiegelpaleis();
+		  spin = new Spin();
+		  spookhuis = new Spookhuis();
+		  botsauto = new Botsauto();
+		  hawaii = new Hawaii();
+	}
+	
+	
+	public void zetBudget(double b) {
+		this.budget = b;
+	}
+	
+	public void kiesAttractie(int bezoek) {
+		switch(bezoek) {
+		case 1: if(this.budget >= botsauto.getRitprijs()) {
+					this.budget -= botsauto.getRitprijs();
+					botsauto.draait();
+					break;
+				}else {
+					System.out.println("Je hebt te weinig budget voor de "+ spin.getName()+ ". Kies wat anders.");
+					break;
+				}
+		case 2: if(this.budget >= spin.getRitprijs()) {
+					this.budget -= spin.getRitprijs();
+					spin.draait();
+					break;
+				} else { 
+					System.out.println("Je hebt te weinig budget voor de "+ botsauto.getName() + ". Kies wat anders.");
+					break;
+				}
+		case 3: if(this.budget >= spiegelpaleis.getRitprijs()) {
+					this.budget -= spiegelpaleis.getRitprijs();
+					spiegelpaleis.draait();
+					break;
+				} else {
+					System.out.println("Je hebt te weinig budget voor het "+ spiegelpaleis.getName() + ". Kies wat anders.");
+					break;
+				}
+		case 4: if (this.budget >= spookhuis.getRitprijs()) {
+					this.budget -= spookhuis.getRitprijs();
+					spookhuis.draait();
+					break;
+				} else {
+					System.out.println("Je hebt te weinig budget voor het "+ spookhuis.getName() + ". Kies wat anders.");
+					break;
+				}
+		case 5: if (this.budget >= hawaii.getRitprijs()) {
+					this.budget -= hawaii.getRitprijs();
+					hawaii.draait();
+					break;
+				} else {
+					System.out.println("Je hebt te weinig budget voor de "+ hawaii.getName() + ". Kies wat anders.");
+					break;
+				}
+		case 6: if (this.budget >= ladderklimmen.getRitprijs()) {
+					this.budget -= ladderklimmen.getRitprijs();
+					hawaii.draait();
+					break;
+				} else {
+					System.out.println("Je hebt te weinig budget voor het "+ ladderklimmen.getName() + ". Kies wat anders.");
+					break;
+				}
+		case 7: System.out.println("Je kiest er voor om te vertrekken. Bedankt voor je bezoek! Je gaat met "+this.budget+ " euro weer naar huis");
+		default: System.out.println("Geen attractie gekozen, kies een getal tussen 1-6.");
+					break;
+		}
+
+	}
+	
+	
+	public void kermisbezoek () { 
+		System.out.println("Leuk dat je er bent! Hoe veel geld heb je te besteden?");
+		Scanner scanner = new Scanner(System.in);
+		double b = scanner.nextDouble();
+			if (b > 0) {
+				this.zetBudget(b);
+				System.out.println("Je hebt " + this.budget + " euro om te besteden.");
+				
+				bezoekjes: while (this.budget >0) {
+					System.out.println("Welke attractie wil je doen?");
+					System.out.println("Geef het bijbehorende getal in om een attractie te bezoeken");
+					toonAttracties();
+					
+					int bezoek = scanner.nextInt();
+					kiesAttractie(bezoek);
+
+					if (this.budget>0) {
+							System.out.println("Je hebt nog "+ this.budget +" euro.");
+					}else {
+							System.out.println("Je geld is op");
+							break bezoekjes;
+					}
+		
+	}
+
+	scanner.close();
+	
+	}
+		
+	}
+	
+	public void kermiswerk () {
+		
+	}
+	
+	
+	public void toonAttracties() {
+				System.out.println("1: Botsauto's voor "+botsauto.getRitprijs()
+				+ "\n2: Spin voor "+spin.getRitprijs()+"\n3: Spiegelpaleis voor "
+				+spiegelpaleis.getRitprijs()+ "\n4: spookhuis voor "
+				+spookhuis.getRitprijs()+ "\n5: Hawaii voor "+hawaii.getRitprijs()
+				+"\n6: Ladderklimmen voor "+ladderklimmen.getRitprijs() 
+				+"\n7: Geen attractie meer, tijd om naar huis te gaan!");
 	}
 
 	public static void main(String[] args) {
@@ -23,199 +142,40 @@ public class Kermis {
 			wie = scanner.next();
 		}
 		if (wie.equalsIgnoreCase("b")) {
-			System.out.println("Leuk dat je er bent! Hoe veel geld heb je te besteden?");
-			double b = scanner.nextDouble();
-				if (b > 0) {
-					Kermis kermisbezoek = new Kermis(b);
-					System.out.println("Je hebt " + kermisbezoek.budget + " euro om te besteden.");
-					
-					bezoekjes: while (kermisbezoek.budget >0) {
-					System.out.println("Welke attractie wil je doen?");
-					System.out.println("Geef het bijbehorende getal in om een attractie te bezoeken");
-					System.out.println("1: Botsauto's voor "+Botsauto.getRitprijs()+ "\n2: Spin voor "+Spin.getRitprijs()+
-										"\n3: Spiegelpaleis voor "+Spiegelpaleis.getRitprijs()+ "\n4: Spookhuis voor "+
-										Spookhuis.getRitprijs()+ "\n5: Hawaii voor "+Hawaii.getRitprijs()+
-										"\n6: Ladderklimmen voor "+Ladderklimmen.getRitprijs());
-					int bezoek = scanner.nextInt();
+			Kermis kermis = new Kermis();
+			kermis.kermisbezoek();
 		
-					switch(bezoek) {
-					case 1: if(kermisbezoek.budget >= Botsauto.getRitprijs()) {
-								new Botsauto();	
-								kermisbezoek.budget -= Botsauto.getRitprijs();
-								break;
-							}else {
-								System.out.println("Je hebt te weinig budget voor de "+ Spin.getName()+ ". Kies wat anders.");
-								break;
-							}
-					case 2: if(kermisbezoek.budget >= Spin.getRitprijs()) {
-								new Spin();
-								kermisbezoek.budget -= Spin.getRitprijs();
-								break;
-							} else { 
-								System.out.println("Je hebt te weinig budget voor de "+ Botsauto.getName() + ". Kies wat anders.");
-								break;
-							}
-					case 3: if(kermisbezoek.budget >= Spiegelpaleis.getRitprijs()) {
-								new Spiegelpaleis();
-								kermisbezoek.budget -= Spiegelpaleis.getRitprijs();
-								break;
-							} else {
-								System.out.println("Je hebt te weinig budget voor het "+ Spiegelpaleis.getName() + ". Kies wat anders.");
-								break;
-							}
-					case 4: if (kermisbezoek.budget >= Spookhuis.getRitprijs()) {
-								new Spookhuis();
-								kermisbezoek.budget -= Spookhuis.getRitprijs();
-								break;
-							} else {
-								System.out.println("Je hebt te weinig budget voor het "+ Spookhuis.getName() + ". Kies wat anders.");
-								break;
-							}
-					case 5: if (kermisbezoek.budget >= Hawaii.getRitprijs()) {
-								new Hawaii();
-								kermisbezoek.budget -= Hawaii.getRitprijs();
-								break;
-							} else {
-								System.out.println("Je hebt te weinig budget voor de "+ Hawaii.getName() + ". Kies wat anders.");
-								break;
-							}
-					case 6: if (kermisbezoek.budget >= Ladderklimmen.getRitprijs()) {
-								new Ladderklimmen();
-								kermisbezoek.budget -= Ladderklimmen.getRitprijs();
-								break;
-							} else {
-								System.out.println("Je hebt te weinig budget voor het "+ Ladderklimmen.getName() + ". Kies wat anders.");
-								break;
-							}
-					default: System.out.println("Geen attractie gekozen, kies een getal tussen 1-6.");
-								break;
-					}
-
-				if (kermisbezoek.budget>0) {
-					System.out.println("Je hebt nog "+ kermisbezoek.budget +" euro.");
-					System.out.println("Wil je nog een attractie doen? Type: 'ja' of 'nee'.");
-				}else {
-					break bezoekjes;
-				}
 			
-			String vraag = scanner.next();
-			if (vraag.equalsIgnoreCase("ja")) {
-				continue bezoekjes;
-			} else if (vraag.equalsIgnoreCase("nee")){
-				System.out.println("Je gaat met " + kermisbezoek.budget + " weer naar huis.");
-				System.out.println("Bedankt voor je bezoek en tot ziens!");
-				scanner.close();
-				break;
-			}
-			else {
-				System.out.println("Ik heb het niet begrepen, dus misschien is het tijd om te stoppen? \nJe krijgt nog een kans.");
-				System.out.println("Type 'ja' om door te gaan en 'nee' om naar huis te gaan.");
-				String laatsteKans = scanner.next();
-				if (laatsteKans.equalsIgnoreCase("ja")) {
-					continue bezoekjes;
-				} else if (vraag.equalsIgnoreCase("nee")){
-					System.out.println("Je gaat met " + kermisbezoek.budget + " weer naar huis.");
-					System.out.println("Bedankt voor je bezoek en tot ziens!");
-					scanner.close();
-					break;
-				}
-				
-			}
-		 
-		}
-	
-		scanner.close();
-		
-		}
 		
 		}else if (wie.equalsIgnoreCase("m")) {
+			Medewerker m = new Medewerker();
 			System.out.println("Fijn dat je er bent. Om toegang te krijgen tot de kassa hebben we je wachtwoord nodig: " +
 								"\nGeef het wachtwoord in: ");
 				String ww = scanner.next();
-				while(ww.equals(Medewerker.getWachtwoord()) == false) {
+				while(ww.equals(m.getWachtwoord()) == false) {
 					System.out.println("Onjuist. Probeer opnieuw:");
 					ww = scanner.next();
 				}
-				if (ww.equals(Medewerker.getWachtwoord())) {
+				if (ww.equals(m.getWachtwoord())) {
 					System.out.println();
 					System.out.println("Correct. Werkse!");
-					Medewerker medewerker = new Medewerker();
+					m.startWerkdag();
 					
-					while (medewerker.getIsAanHetWerk() == true) {
-						System.out.println("Geef door middel van de cijfers 1-6 aan welke kaartjes je verkoopt." + 
-								"\nOf kijk met 'o' of 'k' wat de omzet of de hoeveelheid verkochte kaartjes is."+
-								"\nOm je werkdag te beeindigen kies 's'.");
-						System.out.println("1: Botsauto's \n2: Spin \n3: Spiegelpaleis \n4: Spookhuis \n5: Hawaii \n6: Ladderklimmen \no = omzet \nk = aantal verkochte kaartjes \ns = stop"); 
-						String actie = scanner.next();
-						switch(actie) {
-						case "1": 	System.out.println();
-									new Botsauto();	
-									System.out.println();
-									break;
-						case "2":	System.out.println();
-									new Spin();
-									System.out.println();
-									break;
-						case "3": 	System.out.println();
-									new Spiegelpaleis();
-									System.out.println();
-									break;
-						case "4": 	System.out.println();
-									new Spookhuis();
-									System.out.println();
-									break;
-						case "5": 	System.out.println();
-									new Hawaii();
-									System.out.println();
-									break;
-						case "6": 	System.out.println();
-									new Ladderklimmen();
-									System.out.println();
-									break;
-						case "o"	:	System.out.println();
-									System.out.println("De huidige omzet in euro is: "+ Attractie.getOmzet());
-									System.out.println("De omzet per attractie is: "+
-											"\nBotsauto's: " + Botsauto.getOmzet()+
-											"\nSpin: "+ Spin.getOmzet()+
-											"\nSpiegelpaleis: "+ Spiegelpaleis.getOmzet()+
-											"\nSpookhuis: "+ Spookhuis.getOmzet()+
-											"\nHawaii: "+ Hawaii.getOmzet()+
-											"\nLadderklimmen: "+ Ladderklimmen.getOmzet());
-									System.out.println();
-									break;
-						case "k":	System.out.println();
-									System.out.println("De huidige kaartverkoop is: "+ Attractie.getRitjes());
-									System.out.println("De kaartverkoop per attractie is: "+
-										"\nBotsauto's: " + Botsauto.getRitjes()+
-										"\nSpin: "+ Spin.getRitjes()+
-										"\nSpiegelpaleis: "+ Spiegelpaleis.getRitjes()+
-										"\nSpookhuis: "+ Spookhuis.getRitjes()+
-										"\nHawaii: "+ Hawaii.getRitjes()+
-										"\nLadderklimmen: "+ Ladderklimmen.getRitjes());
-									System.out.println();
-									break;
-						case "s":	System.out.println();
-									System.out.println("De dag is ten einde.");
-									System.out.println("De dagomzet in euro's is: "+ Attractie.getOmzet());
-									System.out.println("De totale kaartverkoop is: "+ Attractie.getRitjes());
-									System.out.println("Tot de volgende keer!");
-									medewerker.eindeWerkdag();
-									scanner.close();
-									break ;
-						default: 	System.out.println();
-									System.out.println("Geen geldige actie gekozen, kies een getal tussen 1-6 of 'o','k' of 's'.");
-									System.out.println();
-									break;
+					while (m.getIsAanHetWerk() == true) {
+						String keuze = scanner.next();
+						m.werken(keuze);
+						
 						}
 
 						
 					}
 			}
 		
+		scanner.close();
 		}
 		
 				
-	}
+	
 
 }
 		
